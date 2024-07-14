@@ -3,17 +3,17 @@ import './Widget.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
-function Widget(props) {
+function Widget({ data }) {
 
   return (
     <div className="widget-container justify-center w-full">
       <div className="bg-white rounded-xl overflow-hidden shadow-lg p-4 ">
         <div className=" py-2">
           <div className="flex justify-between space-x-2" alt="foto de perfil do psicologo">
-            <Image src={props.perfil} className="w-16 h-16 rounded-full" alt='Logotipo' />
+            <Image src={data.avatarUrl} width={200} height={200} className="w-16 h-16 rounded-full" alt='Logotipo' />
             <div>
-              <div className="font-extrabold text-sky-950 w-72 h-5 text-left whitespace-nowrap">Angela Cruz de Souza Melquiades</div>
-              <p className="text-gray-500 w-72 h-8 text-left mt-1 ">Especializacao em psicopatologia CRP:06/170123</p>
+              <div className="font-extrabold text-sky-950 w-72 h-5 text-left whitespace-nowrap">{data.firstName + ' ' + data.lastName}</div>
+              <p className="text-gray-500 w-72 h-8 text-left mt-1 ">{data.specialization} CRP:{data.crp}</p>
             </div>
           </div>
         </div>
@@ -33,9 +33,9 @@ function Widget(props) {
           </p>
         </div>
         <div>
-        <Link href='/psi/1'>
-          <button className='widget-button text-sm text-blue-700 hover:underline' >Ver perfil completo</button>
-        </Link>
+          <Link href={'/psi/' + data.id}>
+            <button className='widget-button text-sm text-blue-700 hover:underline' >Ver perfil completo</button>
+          </Link>
         </div>
       </div>
     </div>
