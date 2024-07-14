@@ -1,6 +1,8 @@
 
 import './Widget.css';
 import Image from 'next/image';
+import Link from 'next/link';
+
 function Widget(props) {
 
   return (
@@ -31,7 +33,9 @@ function Widget(props) {
           </p>
         </div>
         <div>
-          <button className='widget-button text-sm' >Ver perfil completo</button>
+        <Link href='/psi/1'>
+          <button className='widget-button text-sm text-blue-700 hover:underline' >Ver perfil completo</button>
+        </Link>
         </div>
       </div>
     </div>
