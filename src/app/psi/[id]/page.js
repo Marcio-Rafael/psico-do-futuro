@@ -15,7 +15,7 @@ async function fetchPsychologistsById(id) {
 }
 export default async function Page({ params }) {
   const data = await fetchPsychologistsById(params.id)
-
+  const colores = ['red', 'blue', 'yellow']
   return (
     <div className="flex flex-col items-center px-2 md:px-24 pb-20 bg-red-50 min-h-screen space-y-5">
       <div className="px-96 py-16">
@@ -41,11 +41,11 @@ export default async function Page({ params }) {
           <div className="flex items-center gap-5 mb-5">
             <div className="text-center flex-[1_1_50%]">
               <p className="text-gray-600 text-start text-sm">Primeira Sessao</p>
-              <span className="inline-block bg-gray-100 rounded-md px-3 py-1 text-sm font-semibold text-gray-700 w-full">R${(data.sessionPrice ? parseFloat(data.sessionPrice).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}):'0,00')}</span>
+              <span className="inline-block bg-gray-100 rounded-md px-3 py-1 text-sm font-semibold text-gray-700 w-full">R${(data.sessionPrice ? parseFloat(data.sessionPrice).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0,00')}</span>
             </div>
             <div className="text-center flex-[1_1_50%]">
               <p className="text-gray-600 text-start text-sm ">Plano mensal</p>
-              <span className="inline-block bg-green-100 rounded-md px-3 py-1 text-sm font-semibold text-gray-950 w-full">R${(data.montlyPrice ? parseFloat(data.sessionPrice).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}):'0,00')}</span>
+              <span className="inline-block bg-green-100 rounded-md px-3 py-1 text-sm font-semibold text-gray-950 w-full">R${(data.montlyPrice ? parseFloat(data.sessionPrice).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0,00')}</span>
             </div>
           </div>
         </div>
@@ -53,7 +53,7 @@ export default async function Page({ params }) {
           <div class="px-10 py-5 ">
             <div class="font-semibold text-xl text-gray-700 mb-5 mt-1">Descrição pessoal</div>
             <p class="text-left text-sm text-gray-700 mb-5">
-             {data.bio}
+              {data.bio}
             </p>
           </div>
         </div>
@@ -61,21 +61,15 @@ export default async function Page({ params }) {
           <div class="px-10 py-5 ">
             <div class=" font-semibold text-xl text-gray-700">Anamnese
               <div className='flex flex-wrap items-center mt-5'>
-              <span class="flex items-center bg-red-100 rounded-lg px-3 py-1  text-sm font-medium text-red-700 mr-2 mb-2 gap-1 transform transition-transform hover:scale-105">{data.anamnesis}
-                  <svg xmlns="http://www.w3.org/200/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#B55154" class="size-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                  </svg>
-                </span>
-                <span class="flex items-center bg-blue-100 rounded-lg px-3 py-1 text-sm font-medium text-blue-700 mr-2 mb-2 gap-1 transform transition-transform hover:scale-105">Controle de Raiva
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#64B5F6" class="size-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                  </svg>
-                </span>
-                <span class="flex items-center bg-yellow-100 rounded-lg px-3 py-1 text-sm font-medium text-yellow-700 mr-2 mb-2 gap-1 transform transition-transform hover:scale-105">Stress
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#B55154" class="size-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                  </svg>
-                </span>
+
+                {data.anamnesis?.map((item, index) => (
+                  <span class={"flex items-center bg-" + colores[index % colores.length] + "-100 rounded-lg px-3 py-1  text-sm font-medium text-" + colores[index % colores.length] + "-700 mr-2 mb-2 gap-1 transform transition-transform hover:scale-105"}> {item.name}
+                    <svg xmlns="http://www.w3.org/200/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke={(index % colores.length == 0) ? "#B55153" : '' + (index % colores.length == 1) ? "#64B5F6" : ''} class="size-5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                  </span>
+                ))}
+
               </div>
             </div>
 
@@ -94,9 +88,9 @@ export default async function Page({ params }) {
                   </a>
                 </p>
               </div>
-              {data.ProfessionalCarreerTrail?.map((item) => (
+              {data.professionalCarreerTrail?.map((item) => (
                 <div key={item.id} className='flex items-center gap-4'>
-                  <svg className='bg-red-200 w-6 rounded-2xl' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <svg className='bg-red-200 w-6 rounded-2xl size-6' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                   </svg>
                   <p className='text-left text-sm text-gray-700 space-y-1'>{item.name}</p>
