@@ -18,7 +18,7 @@ export default async function DisplayList() {
   return (
     <div className="flex flex-wrap gap-7 justify-center lg:justify-start">
       {psychologists.map((item, index) => (
-        <Widget data={item} index={index}></Widget>
+        <Widget key={index} data={item} index={index}></Widget>
       ))}
     </div>
   );
