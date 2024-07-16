@@ -9,7 +9,7 @@ function Widget({ data, index }) {
 
   return (
     <div className="widget-container justify-center w-full">
-      <div className="bg-white rounded-xl overflow-hidden shadow-lg p-4 transform transition-transform hover:scale-105">
+      <div className="bg-white rounded-xl overflow-hidden shadow-lg p-4 transform transition-transform hover:scale-105 flex flex-col h-full">
         <header>
           <div className=" py-2">
             <div className="flex justify-between space-x-2">
@@ -22,7 +22,7 @@ function Widget({ data, index }) {
             </div>
           </div>
         </header>
-        <section>
+        <section className='flex-grow'>
           <div className="flex items-center gap-5 mb-5">
               <div className="text-center flex-[1_1_50%]">
                 <p className="text-gray-600 text-start text-sm">Primeira Sessao</p>
