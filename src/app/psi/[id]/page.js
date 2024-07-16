@@ -14,8 +14,7 @@ async function fetchPsychologistsById(id) {
   return data.find(x => x.id === id)
 }
 export default async function Page({ params }) {
-  const data = await fetchPsychologistsById(params.id)
-  const colores = ['red', 'blue', 'yellow']
+  const data = await fetchPsychologistsById(params.id);
   return (
     <div className="flex flex-col items-center md:px-24 pb-20 px-2 bg-red-50 min-h-screen space-y-5 w-full ">
       <div className="px-5 py-16">
@@ -24,7 +23,7 @@ export default async function Page({ params }) {
             <svg className='w-5' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" aria-label='Retornar' role='button'>
               <path strokelinecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
             </svg>
-            <span className=' font-light'>Retortar à lista</span>
+            <span className=' font-light'>Retornar à lista</span>
           </button>
         </Link>
       </div>
@@ -61,18 +60,15 @@ export default async function Page({ params }) {
           <div class="px-10 py-5 ">
             <div class=" font-semibold text-xl text-gray-700">Anamnese
               <div className='flex flex-wrap items-center mt-5'>
-
                 {data.anamnesis?.map((item, index) => (
-                  <span class={"flex items-center bg-" + colores[index % colores.length] + "-100 rounded-lg px-3 py-1  text-sm font-medium text-" + colores[index % colores.length] + "-700 mr-2 mb-2 gap-1 transform transition-transform hover:scale-105"}> {item.name}
-                    <svg xmlns="http://www.w3.org/200/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke={(index % colores.length == 0) ? "#B55153" : '' + (index % colores.length == 1) ? "#64B5F6" : ''} class="size-5" aria-label='Anamneses' role='icones anamneses'>
+                  <span class='flex items-center bg-red-200  rounded-lg px-3 py-1 text-sm font-medium text-red-700 mr-2 mb-2 gap-1 transform transition-transform hover:scale-105'>{item.name}
+                    <svg xmlns="http://www.w3.org/200/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#B55153" class="size-5" aria-label='anamneses' role='icones anamneses'>
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                   </span>
                 ))}
-
               </div>
             </div>
-
           </div>
         </article>
         <footer class="flex rounded-2xl max-w-lg shadow-lg bg-white">
