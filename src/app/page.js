@@ -18,7 +18,7 @@ export default function Home() {
       </div>
       <div>
         <div className='text-left mb-24'>
-          <h1 className='text-red-400 md:text-6xl font-bold mb-6'>Encontre a profissional<br /> certa e transforme sua vida.</h1>
+          <h1 className='text-red-400 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6'>Encontre a profissional<br/> certa e transforme sua vida.</h1>
           <p className='paragrafo-home text-xl text-cyan-950'>Encontramos alguns psis que se encaixam em seu perfil,veja mais <br />detalhes de cada profissional e agende sua primeira consulta.</p>
         </div>
         <DisplayList />
