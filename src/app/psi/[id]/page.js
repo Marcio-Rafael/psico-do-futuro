@@ -17,23 +17,23 @@ export default async function Page({ params }) {
   const data = await fetchPsychologistsById(params.id)
   const colores = ['red', 'blue', 'yellow']
   return (
-    <div className="flex flex-col items-center px-2 md:px-24 pb-20 bg-red-50 min-h-screen space-y-5">
-      <div className="px-96 py-16">
+    <div className="flex flex-col items-center md:px-24 pb-20 px-2 bg-red-50 min-h-screen space-y-5 w-full ">
+      <div className="px-5 py-16">
         <Link href={'/'}>
-          <button class=" flex gap-2  bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-7 rounded-full transform transition-transform hover:scale-105">
-            <svg className='w-5' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          <button className=" flex gap-2  bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-7 rounded-full transform transition-transform hover:scale-105">
+            <svg className='w-5' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" aria-label='Retornar' role='button'>
+              <path strokelinecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
             </svg>
             <span className=' font-light'>Retortar à lista</span>
           </button>
         </Link>
       </div>
-      <div className='space-y-8'>
+      <main className='space-y-8'>
         <div class="flex flex-col rounded-2xl max-w-lg shadow-lg bg-white p-6 space-y-4">
           <div class="flex items-center space-x-5 ">
             <Image src={data.avatarUrl} width={200} height={200} className="w-16 h-16 rounded-full" alt='Foto do Psicologo' />
             <div>
-              <div class='font-bold text-sky-950 w-72 h-5 text-left whitespace-nowrap'>{data.firstName} {data.lastName}</div>
+              <div class='font-bold text-sky-950 w-10 h-5 text-left whitespace-nowrap'>{data.firstName} {data.lastName}</div>
               <p className="text-gray-500 text-sm">{data.specialization}</p>
               <p className="text-gray-500 text-sm" >CRP:{data.crp}</p>
             </div>
@@ -57,14 +57,14 @@ export default async function Page({ params }) {
             </p>
           </div>
         </div>
-        <div class=" flex rounded-2xl max-w-lg shadow-lg bg-white">
+        <article class=" flex rounded-2xl max-w-lg shadow-lg bg-white">
           <div class="px-10 py-5 ">
             <div class=" font-semibold text-xl text-gray-700">Anamnese
               <div className='flex flex-wrap items-center mt-5'>
 
                 {data.anamnesis?.map((item, index) => (
                   <span class={"flex items-center bg-" + colores[index % colores.length] + "-100 rounded-lg px-3 py-1  text-sm font-medium text-" + colores[index % colores.length] + "-700 mr-2 mb-2 gap-1 transform transition-transform hover:scale-105"}> {item.name}
-                    <svg xmlns="http://www.w3.org/200/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke={(index % colores.length == 0) ? "#B55153" : '' + (index % colores.length == 1) ? "#64B5F6" : ''} class="size-5">
+                    <svg xmlns="http://www.w3.org/200/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke={(index % colores.length == 0) ? "#B55153" : '' + (index % colores.length == 1) ? "#64B5F6" : ''} class="size-5" aria-label='Anamneses' role='icones anamneses'>
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                   </span>
@@ -74,8 +74,8 @@ export default async function Page({ params }) {
             </div>
 
           </div>
-        </div>
-        <div class="flex rounded-2xl max-w-lg shadow-lg bg-white">
+        </article>
+        <footer class="flex rounded-2xl max-w-lg shadow-lg bg-white">
           <div class="flex flex-col px-10 py-5">
             <span className='space-y-2'>
               <div class="font-semibold text-xl mb-5 mt-1 text-gray-700">
@@ -98,9 +98,8 @@ export default async function Page({ params }) {
               ))}
             </span>
           </div>
-        </div>
-
-      </div>
+        </footer>
+      </main>
     </div>
 
   );
