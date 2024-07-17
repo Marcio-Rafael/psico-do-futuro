@@ -1,5 +1,5 @@
 
-import 'C:\Source\psico-do-futuro\src\app\components\widget\widget.css';
+import 'C:/Source/psico-do-futuro/src/app/components/widget/widget.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
