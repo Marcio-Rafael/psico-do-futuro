@@ -1,5 +1,5 @@
 
-import './Widget.css';
+import '../../../components/widget/widget.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
